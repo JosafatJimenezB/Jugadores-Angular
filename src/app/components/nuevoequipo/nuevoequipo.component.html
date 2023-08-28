@@ -1,0 +1,12 @@
+<div class="container py-5">
+    <form class="mx-auto" style="max-width: 15rem;" #form="ngForm" (ngSubmit)="crearEquipo(form)">
+        <h1 class="mb-5 text-center">Nuevo equipo</h1>
+        <div class="mb-3">
+            <label for="username">Nombre del equipo</label>
+            <input type="text" id="username" name="username" class="form-control" [(ngModel)]="equipo.nombre">
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-lg btn-primary">Crear</button>
+        </div>
+    </form>
+</div>

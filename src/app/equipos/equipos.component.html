@@ -1,0 +1,32 @@
+<div class="container-fluid container-lg" *ngIf="!loading">
+    <a href="/equipos/nuevo" class="dropdown-item" *ngIf="authority == 'ADMIN'">Nuevo equipo</a>
+    <table class=" table mx-auto">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombre del equipo</th>
+                <th scope="col">Fundacion</th>
+                <th scope="col">Jugadores</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let equipo of equipos">
+                <th scope="row">{{equipo.id}}</th>
+                <td>{{equipo.nombre}}</td>
+                <td>{{equipo.fundacion}}</td>
+                <td>{{equipo.jugadores.length}}</td>
+                <td>
+                    <a href="/equipos/{{equipo.id}}" class="btn btn-primary">Ver</a>
+                    <a href="/equipos/{{equipo.id}}/editar" class="btn btn-warning"
+                        *ngIf="authority == 'ADMIN'">Editar</a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div *ngIf=" loading">Cargando...
+</div>
