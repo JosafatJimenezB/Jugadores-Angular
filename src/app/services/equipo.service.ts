@@ -21,7 +21,13 @@ export class EquipoService {
   }
 
   getEquipo(id: number) {
-    return this.http.get('/api/equipos/' + id, {
+    return this.http.get('/api/equipos/' +id, {
+      observe: 'response'
+    })
+  }
+
+  deleteEquipo(id: number){
+    return this.http.delete('/api/equipos/' +id, {
       observe: 'response'
     })
   }

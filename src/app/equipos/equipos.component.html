@@ -20,6 +20,7 @@
                     <a href="/equipos/{{equipo.id}}" class="btn btn-primary">Ver</a>
                     <a href="/equipos/{{equipo.id}}/editar" class="btn btn-warning"
                         *ngIf="authority == 'ADMIN'">Editar</a>
+                    <button class="btn btn-danger" (click)="deleteEquipo(equipo.id)" *ngIf="authority == 'ADMIN'">Eliminar</button>
 
                 </td>
             </tr>
