@@ -17,9 +17,9 @@
                 <td>{{equipo.fundacion}}</td>
                 <td>{{equipo.jugadores.length}}</td>
                 <td>
-                    <a href="/equipos/{{equipo.id}}" class="btn btn-primary">Ver</a>
-                    <a href="/equipos/{{equipo.id}}/editar" class="btn btn-warning"
-                        *ngIf="authority == 'ADMIN'">Editar</a>
+                    <button [routerLink]="['/equipos/', equipo.id]" class="btn btn-primary">Ver</button>
+                    <button [routerLink]="['/equipos/update/', equipo.id]" routerLinkActive="router-link-active"
+                        class="btn btn-warning" *ngIf="authority == 'ADMIN'">Editar</button>
 
                 </td>
             </tr>

@@ -7,6 +7,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NuevoequipoComponent } from './components/nuevoequipo/nuevoequipo.component';
 import { ViewequipoComponent } from './components/viewequipo/viewequipo.component';
+import { UpdateequipoComponent } from './components/updateequipo/updateequipo.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'equipos/:id',
     component: ViewequipoComponent,
+    canActivate: [AuthGuard, authExpirationGuard]
+  },
+  {
+    path: 'equipos/update/:id',
+    component: UpdateequipoComponent,
     canActivate: [AuthGuard, authExpirationGuard]
   }
 

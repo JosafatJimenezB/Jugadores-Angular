@@ -15,6 +15,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NuevoequipoComponent } from './components/nuevoequipo/nuevoequipo.component';
 import { ViewequipoComponent } from './components/viewequipo/viewequipo.component';
+import { UpdateequipoComponent } from './components/updateequipo/updateequipo.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ViewequipoComponent } from './components/viewequipo/viewequipo.componen
     NavbarComponent,
     NuevoequipoComponent,
     ViewequipoComponent,
+    UpdateequipoComponent,
   ],
   imports: [
     BrowserModule,

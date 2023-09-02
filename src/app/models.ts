@@ -19,3 +19,8 @@ export interface UserDetails {
 export interface CrearEquipo {
     nombre: string
 }
+
+export interface UpdateEquipo {
+    nombre?: string,
+    fundacion?: string
+}
