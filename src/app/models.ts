@@ -21,6 +21,6 @@ export interface CrearEquipo {
 }
 
 export interface UpdateEquipo {
-    nombre?: string,
-    fundacion?: string
+    nombre?: string | null;
+    fundacion?: string | null;
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { CrearEquipo, UpdateEquipo } from '../models';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,13 @@ export class EquipoService {
     })
   }
 
-  UpdateEquipo(id: number, equipo: UpdateEquipo) {
+  deleteEquipo(id: number) {
+    return this.http.delete('/api/equipos/' + id, {
+      observe: 'response'
+    })
+  }
+
+  UpdateEquipo(id: number, equipo: UpdateEquipo): Observable<any> {
     return this.http.put('/api/equipos/' + id, equipo, {
       observe: 'response'
     })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { UserDetails } from '../models';
+import { EquipoService } from '../services/equipo.service';
 
 @Component({
   selector: 'app-equipos',
@@ -16,7 +16,8 @@ export class EquiposComponent implements OnInit {
 
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private equipoService: EquipoService
   ) {
   }
 
@@ -24,12 +25,14 @@ export class EquiposComponent implements OnInit {
 
     this.UserDetails()
 
+    this.getEquipos()
+  }
+
+  getEquipos(){
     this.apiService.getEquipos().subscribe(
-      (response: any) => {
-        console.log('Equipos: ', response)
-        this.equipos = response;
+      (res: any) => {
+        this.equipos = res;
         this.loading = false;
-        console.log(this.authority)
       },
       (error: any) => {
         console.log('Error: ', error)
@@ -39,10 +42,19 @@ export class EquiposComponent implements OnInit {
   }
 
 
-  UserDetails(): void {
+  UserDetails(): any {
     const data = this.apiService.getUserDetails();
     const userdetails = JSON.parse(JSON.stringify(data));
     this.authority = userdetails.authority;
+  }
+
+  deleteEquipo(id: number){
+    this.equipoService.deleteEquipo(id).subscribe(
+      (res: any) => {
+        this.getEquipos()
+      },(error) => 
+      console.log(error) 
+    );
   }
 
 }

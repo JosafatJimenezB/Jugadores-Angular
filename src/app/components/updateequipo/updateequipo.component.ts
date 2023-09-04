@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { UpdateEquipo } from 'src/app/models';
 import { EquipoService } from 'src/app/services/equipo.service';
 
@@ -13,18 +13,13 @@ import { EquipoService } from 'src/app/services/equipo.service';
 export class UpdateequipoComponent implements OnInit {
 
   id: number = 0;
-
-  updEquipo: UpdateEquipo = {
-    nombre: '',
-    fundacion: ''
-  };
-
   equipo: any
 
 
   constructor(
     private route: ActivatedRoute,
-    private equipoService: EquipoService
+    private equipoService: EquipoService,
+    private router: Router
   ) {
 
     this.id = Number(this.route.snapshot.paramMap.get('id'))
@@ -37,9 +32,8 @@ export class UpdateequipoComponent implements OnInit {
 
   getEquipoFromId(id: number) {
     this.equipoService.getEquipo(id)
-      .subscribe(response => {
-        this.equipo = response.body
-        console.log(this.equipo)
+      .subscribe(res => {
+        this.equipo = res.body
       },
         error => {
           console.log(error)
@@ -49,7 +43,7 @@ export class UpdateequipoComponent implements OnInit {
   updateEquipo(form: NgForm) {
     this.equipoService.UpdateEquipo(this.id, this.equipo)
       .subscribe(response => {
-        console.log(response)
+        this.router.navigate(['/'])
       })
   }
 

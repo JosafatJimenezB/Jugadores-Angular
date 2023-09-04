@@ -20,6 +20,8 @@
                     <button [routerLink]="['/equipos/', equipo.id]" class="btn btn-primary">Ver</button>
                     <button [routerLink]="['/equipos/update/', equipo.id]" routerLinkActive="router-link-active"
                         class="btn btn-warning" *ngIf="authority == 'ADMIN'">Editar</button>
+                    <button class="btn btn-danger" (click)="deleteEquipo(equipo.id)"
+                        *ngIf="authority == 'ADMIN'">Eliminar</button>
 
                 </td>
             </tr>
